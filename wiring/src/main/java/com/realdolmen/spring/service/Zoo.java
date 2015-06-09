@@ -1,6 +1,7 @@
 package com.realdolmen.spring.service;
 
 import com.realdolmen.spring.domain.Animal;
+import com.realdolmen.spring.domain.FoodDistributionService;
 import com.realdolmen.spring.domain.Visitor;
 
 /**
@@ -17,5 +18,5 @@ public interface Zoo {
 
     int countAnimals();
 
-    // TODO add method to feed animals
+    void feedAnimals();
 }

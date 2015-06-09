@@ -15,7 +15,10 @@ public class ApplicationConfiguration {
         Zoo zoo = context.getBean(Zoo.class);
         System.out.println(zoo.getName());
         System.out.println("Nr. of Animals: " + zoo.countAnimals());
-        // TODO call the method to feed the animals
+
+        zoo.feedAnimals();
+
+
 
     }
 }

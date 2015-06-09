@@ -1,17 +1,17 @@
 package com.realdolmen.spring.service;
 
 import com.realdolmen.spring.domain.Animal;
+import com.realdolmen.spring.domain.FoodDistributionService;
 import com.realdolmen.spring.domain.Visitor;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by cda5732 on 25/03/2015.
- */
 public class PairiDaiza implements Zoo {
     private String name;
     private List<Animal> animals = new ArrayList<>();
+    private FoodDistributionService foodDistributionService;
 
     // TODO fetch the FoodDistributionService
 
@@ -43,6 +43,19 @@ public class PairiDaiza implements Zoo {
     @Override
     public int countAnimals() {
         return animals.size();
+    }
+
+    public void setFoodDistributionService(FoodDistributionService foodDistributionService) {
+        this.foodDistributionService = foodDistributionService;
+    }
+    @Override
+    public void feedAnimals() {
+        foodDistributionService.feedAnimalsByType(animals);
+    }
+
+
+    public FoodDistributionService getFoodDistributionService() {
+        return foodDistributionService;
     }
 
 
