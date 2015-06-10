@@ -20,6 +20,6 @@ public abstract class Animal {
 
     // TODO Feed the Animal some Food
     public void feed(Food f) {
-        System.out.println("Gving food " + f + " to animal " + getName());
+        System.out.println("Gving " + f + " to animal " + getName() + "\n");
     }
 }

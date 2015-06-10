@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 
 @Configuration
@@ -22,11 +23,22 @@ public class ZooConfig {
         return zoo;
     }
     @Bean
+    @Profile("production")
     public FoodRepository foodRepository() {
         FoodRepositoryImpl foodRepository = new FoodRepositoryImpl();
         foodRepository.addFoodForAnimalType(Bear.class, new MeatyFood(""));
         foodRepository.addFoodForAnimalType(Tiger.class, new MeatyFood("trage huisdieren in zoetzure saus"));
         foodRepository.addFoodForAnimalType(Elephant.class, new VegiFood("Pekes en ertjes"));
         return foodRepository;
+    }
+
+    @Bean
+    @Profile("test")
+    public FoodRepository testFoodRepository(){
+        FoodRepository testFoodRepository = new TestFoodRepository();
+        testFoodRepository.addFoodForAnimalType(Bear.class, new Kibblefood(""));
+        testFoodRepository.addFoodForAnimalType(Tiger.class, new Kibblefood(""));
+        testFoodRepository.addFoodForAnimalType(Elephant.class, new Kibblefood(""));
+        return testFoodRepository;
     }
 }
